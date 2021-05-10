@@ -1,0 +1,20 @@
+.rented__car {
+  background-color: #007e33;
+  border-radius: 10px;
+  line-height: 16px;
+  padding: 1em;
+}
+
+.rented__car__other {
+  background-color: #ff8800;
+  border-radius: 10px;
+  line-height: 16px;
+  padding: 1em;
+}
+
+.rented__car__other > p,
+.rented__car > p {
+  margin: 0;
+  color: white;
+  font-weight: 500;
+}

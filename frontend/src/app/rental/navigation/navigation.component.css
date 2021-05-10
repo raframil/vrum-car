@@ -1,0 +1,28 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.sidenav {
+  width: 250px;
+}
+
+::ng-deep .mat-menu-content {
+  width: 220px;
+}
+
+.active-list-item {
+  font-weight: bold;
+  color: var(--teal);
+}
+
+.nav-caption {
+  margin-left: 5%;
+}

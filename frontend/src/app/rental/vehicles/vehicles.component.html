@@ -1,0 +1,49 @@
+<div class="content" *ngIf="!loadingVehicles; else indicator">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <h1 *ngIf="vehicles?.length === 0 || !vehicles">Não há veículos cadastrados</h1>
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let vehicle of vehicles">
+            <mat-card class="mat-elevation-z4">
+                <mat-card-header>
+                    <mat-card-title>{{ vehicle.model }} - {{ vehicle.brand }}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image src="{{ vehicle.image }}" *ngIf="vehicle.image">
+                <img mat-card-image src="assets/car_placeholder.png" *ngIf="!vehicle.image" />
+                <mat-card-content>
+                    <p>
+                        Veículo do tipo <b>{{ vehicle.vehicle_type }}</b> disponível na cor {{ vehicle.color }}, modelo
+                        do ano
+                        de {{ vehicle.year }}. Altamente
+                        conservado com apenas <b>{{ vehicle.mileage }}km</b> rodados.
+                    </p>
+                    <p>Placa do automóvel: {{ vehicle.plate_number }}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="accent" (click)="return(vehicle)"
+                        *ngIf="vehicle.user && isRentedByMe(vehicle)">Devolver
+                        veículo</button>
+
+                    <button mat-raised-button color="primary" (click)="rent(vehicle)"
+                        [disabled]="vehicle.user ? true : false" *ngIf="!isRentedByMe(vehicle)">Alugar
+                        veículo</button>
+                    <button mat-button (click)="share(vehicle)">Compartilhar</button>
+
+                    <div class="mt-3 rented__car" *ngIf="vehicle.user && isRentedByMe(vehicle)"
+                        fxLayoutAlign="center center">
+                        <p>Esse veículo foi alugado por você</p>
+                    </div>
+
+                    <div class="mt-3 rented__car__other" *ngIf="vehicle.user && !isRentedByMe(vehicle)"
+                        fxLayoutAlign="center center">
+                        <p>Esse veículo foi alugado por outra pessoa</p>
+                    </div>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+<ng-template #indicator>
+    <div class="spinner-wrapper mt-20vh" fxLayout="row">
+        <mat-spinner [diameter]="50"></mat-spinner>
+    </div>
+</ng-template>

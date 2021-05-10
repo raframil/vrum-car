@@ -1,0 +1,17 @@
+<div>
+    <h1 mat-dialog-title>Compartilhar no WhatsApp</h1>
+
+    <div mat-dialog-content [formGroup]="form">
+        <p>Insira o número apenas com DDD e dígito 9.</p>
+
+        <mat-form-field style="width: 100%;" class="mt-2">
+            <textarea #name matInput formControlName="number" placeholder="Número do celular" maxlength="15"></textarea>
+            <mat-hint align="end">{{name.value.length}} / 15</mat-hint>
+        </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions fxLayoutAlign="end end" class="mt-5">
+        <button color="default" mat-button (click)="onNoClick()">Cancelar</button>
+        <button class="success-btn" mat-raised-button (click)="save()">Compartilhar</button>
+    </div>
+</div>

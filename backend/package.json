@@ -1,0 +1,39 @@
+{
+  "name": "vrumcar-api",
+  "version": "1.0.0",
+  "description": "API para locacao de veiculos",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon --exec ts-node --files src/index.ts",
+    "typeorm:create": "npx typeorm migration:create -n",
+    "typeorm:migrate": "npx typeorm migration:run --config ormconfig.ts",
+    "typeorm": "npx ts-node ./node_modules/typeorm/cli.js",
+    "migrate:create": "ts-node ./node_modules/typeorm/cli.js migration:create -n",
+    "migrate:up": "ts-node ./node_modules/typeorm/cli.js migration:run",
+    "migrate:down": "ts-node ./node_modules/typeorm/cli.js migration:revert",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rafael Framil",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.11.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.6.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.32",
+    "typescript": "^4.2.4"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.1",
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.11",
+    "@types/jsonwebtoken": "^8.5.1",
+    "@types/node": "^15.0.2",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1"
+  }
+}
